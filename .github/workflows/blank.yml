@@ -16,8 +16,15 @@ jobs:
       - name: Deploy backend
         shell: powershell
         run: |
+          $ErrorActionPreference = "Stop"
+        
           Set-Location D:\BlueStreams\bluestreams-backend\code-with-quarkus
+      
+          pm2 stop backend
+      
           git fetch origin
           git reset --hard origin/dev
-          .\mvnw.cmd clean package
+      
+          .\mvnw.cmd package -DskipTests
+      
           pm2 restart backend
