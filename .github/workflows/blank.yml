@@ -1,0 +1,20 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Deploy backend
+        shell: powershell
+        run: |
+          Set-Location D:\BlueStreams\bluestreams-backend\code-with-quarkus
+          git fetch origin
+          git reset --hard origin/dev
+          .\mvnw.cmd clean package
+          pm2 restart backend
