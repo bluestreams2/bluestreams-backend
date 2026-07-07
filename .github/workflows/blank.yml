@@ -7,8 +7,10 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
-
+    runs-on:
+        - self-hosted
+        - Windows
+        - X64
     steps:
       - name: Deploy backend
         shell: powershell
