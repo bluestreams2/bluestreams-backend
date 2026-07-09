@@ -3,11 +3,9 @@ package com.spmf;
 import com.spmf.dto.LoginRequest;
 import com.spmf.dto.RegisterRequest;
 
+import io.quarkus.security.Authenticated;
 import jakarta.transaction.Transactional;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
@@ -123,4 +121,12 @@ public class AuthResource {
                 token
         ).build();
     }
+
+    @GET
+    @Path("/check")
+    @Authenticated
+    public Response check() {
+        return Response.ok().build();
+    }
+
 }
