@@ -2,6 +2,7 @@ package com.spmf.auth;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -11,6 +12,7 @@ public class RefreshTokenService {
     @Inject
     RefreshTokenRepository repository;
 
+    @Transactional
     public RefreshToken create(Long userId) {
 
         // Revoke every previous refresh token for this user
