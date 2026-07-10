@@ -135,7 +135,7 @@ public class AuthResource {
                         .path("/")
                         .httpOnly(true)
                         .secure(true) // localhost change to false
-                        .sameSite(NewCookie.SameSite.LAX)
+                        .sameSite(NewCookie.SameSite.NONE)
                         .maxAge(60 * 60 * 24 * 30)
                         .build();
 
