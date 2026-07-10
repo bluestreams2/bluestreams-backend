@@ -16,15 +16,18 @@ public class RefreshTokenService {
     public RefreshToken create(Long userId) {
 
         // Revoke every previous refresh token for this user
+        System.out.println("Incoming userId = " + userId);
+
         repository.update(
                 "revoked = true where userId = ?1",
                 userId
         );
-        
+
         RefreshToken token = new RefreshToken();
 
         token.userId = userId;
 
+        System.out.println("Entity userId = " + token.userId);
         token.token =
                 RefreshTokenUtil.generate();
 
