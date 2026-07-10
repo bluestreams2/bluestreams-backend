@@ -16,7 +16,8 @@ public class JwtUtil {
                 .subject(username)
                 .claim("userId", userId)
                 .groups(role)
-                .expiresIn(Duration.ofDays(30))
+                //.expiresIn(Duration.ofDays(30))
+                .expiresIn(Duration.ofHours(1))
                 .sign();
     }
 }
